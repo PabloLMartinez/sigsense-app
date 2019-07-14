@@ -2,7 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import {AuthenticationService} from '../../services/authentication.service';
+import { AuthenticationService } from '../../services/authentication.service';
+import { AlertService } from '../../services/alert.service';
 
 @Component({
   selector: 'app-auth',
@@ -16,7 +17,8 @@ export class AuthComponent implements OnInit {
 
   constructor(
     private authenticationService: AuthenticationService,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
+    private alertService: AlertService
   ) { }
 
   ngOnInit() {
@@ -46,10 +48,11 @@ export class AuthComponent implements OnInit {
       .subscribe(
         data => {
           //this.router.navigate([this.returnUrl]);
+          this.alertService.success('Login successful', true);
           console.log(data);
         },
         error => {
-          //this.alertService.error(error);
+          this.alertService.error(error);
           this.loading = false;
         });
   }
