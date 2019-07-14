@@ -23,8 +23,7 @@ export class AuthComponent implements OnInit {
     private router: Router,
     private formBuilder: FormBuilder,
     private authenticationService: AuthenticationService,
-    private alertService: AlertService
-  ) { }
+    private alertService: AlertService ) { }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({

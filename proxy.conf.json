@@ -4,5 +4,17 @@
     "secure": false,
     "changeOrigin": true,
     "logLevel": "debug"
+  },
+  "/companies/*": {
+    "target": "https://dev.sigsense.tech",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/assets/*": {
+    "target": "https://dev.sigsense.tech",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
   }
 }
