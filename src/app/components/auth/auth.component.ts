@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
@@ -11,13 +12,17 @@ import { AlertService } from '../../services/alert.service';
   styleUrls: ['./auth.component.css']
 })
 export class AuthComponent implements OnInit {
+
   loginForm: FormGroup;
   loading = false;
   submitted = false;
+  returnUrl: string;
 
   constructor(
-    private authenticationService: AuthenticationService,
+    private route: ActivatedRoute,
+    private router: Router,
     private formBuilder: FormBuilder,
+    private authenticationService: AuthenticationService,
     private alertService: AlertService
   ) { }
 
@@ -28,6 +33,9 @@ export class AuthComponent implements OnInit {
     });
     // reset login status
     this.authenticationService.logout();
+
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
 
   // convenience getter for easy access to form fields
@@ -47,9 +55,7 @@ export class AuthComponent implements OnInit {
       .pipe(first())
       .subscribe(
         data => {
-          //this.router.navigate([this.returnUrl]);
-          this.alertService.success('Login successful', true);
-          console.log(data);
+          this.router.navigate([this.returnUrl]);
         },
         error => {
           this.alertService.error(error);
