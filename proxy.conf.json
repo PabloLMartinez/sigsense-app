@@ -1,0 +1,8 @@
+{
+  "/login": {
+    "target": "https://dev.sigsense.tech",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}
