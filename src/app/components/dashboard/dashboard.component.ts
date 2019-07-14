@@ -11,7 +11,7 @@ import { AlertService } from '../../services/alert.service';
 })
 export class DashboardComponent implements OnInit {
 
-  assets: any = [];
+  assets: any[];
 
   constructor(
     private assetService: AssetService,
@@ -21,8 +21,20 @@ export class DashboardComponent implements OnInit {
     this.loadAllAssets();
   }
 
-  private loadAllAssets() {
+  public loadAllAssets() {
     this.assetService.getAllAssets()
+      .pipe(first())
+      .subscribe(
+        data => {
+          this.getAssetsDetails(data);
+        },
+        error => {
+          this.alertService.error(error);
+        });
+  }
+
+  private getAssetsDetails(assetsList: Array<string>) {
+    this.assetService.getAssetsDetails(assetsList)
       .pipe(first())
       .subscribe(
         data => {
@@ -33,4 +45,5 @@ export class DashboardComponent implements OnInit {
           this.alertService.error(error);
         });
   }
+
 }
