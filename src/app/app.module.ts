@@ -2,16 +2,14 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AlertComponent } from './directives/alert.component';
-import { ErrorInterceptor, AuthInterceptor } from './helpers';
+import { AuthComponent, DashboardComponent } from './components';
+import { SecureImagePipe } from './pipes';
 
-import { AuthComponent } from './components/auth/auth.component';
-import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { SecureImagePipe } from './pipes/secure-image.pipe';
+import { AlertComponent } from './directives';
+import { ErrorInterceptor, AuthInterceptor } from './helpers';
 
 @NgModule({
   declarations: [

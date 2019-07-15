@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { AssetService } from '../../services/asset.service';
-import { AlertService } from '../../services/alert.service';
+import { AssetService, AlertService } from '../../services';
 
 @Component({
   selector: 'app-dashboard',
