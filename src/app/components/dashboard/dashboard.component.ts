@@ -11,8 +11,8 @@ import { AlertService } from '../../services/alert.service';
 })
 export class DashboardComponent implements OnInit {
 
-  currentUser: object;
-  assets: any[];
+  private currentUser: any = {};
+  public assets: any[];
 
   constructor(
     private assetService: AssetService,

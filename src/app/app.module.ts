@@ -7,8 +7,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { AlertComponent } from './directives/alert.component';
-import { ErrorInterceptor } from './helpers/error.interceptor';
-import { AuthInterceptor } from './helpers/auth.interceptor';
+import { ErrorInterceptor, AuthInterceptor } from './helpers';
 
 import { AuthComponent } from './components/auth/auth.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';

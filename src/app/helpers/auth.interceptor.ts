@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  currentUser: object;
+  private currentUser: any = {};
 
   constructor() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
