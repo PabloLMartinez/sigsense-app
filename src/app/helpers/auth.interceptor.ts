@@ -5,7 +5,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  currentUser: object;
+  currentUser: any = {};
 
   constructor() {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
@@ -13,11 +13,13 @@ export class AuthInterceptor implements HttpInterceptor {
 
   intercept(request: HttpRequest<any>, next: HttpHandler): Observable<HttpEvent<any>> {
 
-    request = request.clone({
-      setHeaders: {
-        'x-access-token': this.currentUser.token
-      }
-    });
+    if (this.currentUser) {
+      request = request.clone({
+        setHeaders: {
+          'x-access-token': this.currentUser.token
+        }
+      });
+    }
 
     return next.handle(request);
   }

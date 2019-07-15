@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
 
-import { AssetService } from '../../services/asset.service';
-import { AlertService } from '../../services/alert.service';
+import { AssetService, AlertService } from '../../services';
 
 @Component({
   selector: 'app-dashboard',
@@ -11,8 +10,8 @@ import { AlertService } from '../../services/alert.service';
 })
 export class DashboardComponent implements OnInit {
 
-  currentUser: object;
-  assets: any[];
+  private currentUser: any = {};
+  public assets: any[];
 
   constructor(
     private assetService: AssetService,

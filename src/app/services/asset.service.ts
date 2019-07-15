@@ -8,7 +8,7 @@ import { Observable, forkJoin } from 'rxjs';
 })
 export class AssetService {
 
-  currentUser: object;
+  private currentUser: any = {};
 
   constructor( private http: HttpClient ) {
     this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
