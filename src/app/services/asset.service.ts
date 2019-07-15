@@ -1,28 +1,30 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-import { Observable, Subject, forkJoin } from 'rxjs';
+import { Observable, forkJoin } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AssetService {
 
-  currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  currentUser: object;
 
-  constructor( private http: HttpClient ) { }
+  constructor( private http: HttpClient ) {
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
-  protected getHeaders() {
+  private getHeaders() {
     return new HttpHeaders({
-      'x-access-token': `${ this.currentUser.token }`
+      'x-access-token': this.currentUser.token
     });
   }
 
-  public getAllAssets() {
+  public getAllAssets(companyId: number) {
 
     const headers = this.getHeaders();
 
-    return this.http.get<any>(`/companies/${ this.currentUser.roles[0].companyId }/assets?limit=10`, { headers })
+    return this.http.get<any>(`/companies/${ companyId }/assets`, { headers })
       .pipe( map( data => data['items'] ) );
   }
 

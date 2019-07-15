@@ -1,6 +1,6 @@
 <h2>Dashboard</h2>
 <div class="mt-5">
-  <h3>Assets Table</h3>
+  <h3 class="text-center">Assets List</h3>
   <table class="table table-striped table-hover">
     <thead class="thead-dark">
     <tr>
@@ -17,7 +17,7 @@
       <td>{{  asset.manufacturer }}</td>
       <td>{{  asset.name }}</td>
       <td>{{  asset.description }}</td>
-      <td>@mdo</td>
+      <td><img [src]="asset.href | secureImage | async" class="img-thumbnail w-25" [alt]="asset.name"></td>
     </tr>
     </tbody>
   </table>
