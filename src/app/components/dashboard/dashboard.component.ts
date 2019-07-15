@@ -11,18 +11,22 @@ import { AlertService } from '../../services/alert.service';
 })
 export class DashboardComponent implements OnInit {
 
+  currentUser: object;
   assets: any[];
 
   constructor(
     private assetService: AssetService,
-    private alertService: AlertService ) { }
+    private alertService: AlertService ) {
+
+    this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  }
 
   ngOnInit() {
     this.loadAllAssets();
   }
 
   public loadAllAssets() {
-    this.assetService.getAllAssets()
+    this.assetService.getAllAssets(this.currentUser.roles[0].companyId)
       .pipe(first())
       .subscribe(
         data => {
@@ -39,7 +43,6 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         data => {
           this.assets = data;
-          console.log(this.assets);
         },
         error => {
           this.alertService.error(error);

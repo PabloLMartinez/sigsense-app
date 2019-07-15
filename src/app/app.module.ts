@@ -8,16 +8,19 @@ import { AppComponent } from './app.component';
 
 import { AlertComponent } from './directives/alert.component';
 import { ErrorInterceptor } from './helpers/error.interceptor';
+import { AuthInterceptor } from './helpers/auth.interceptor';
 
 import { AuthComponent } from './components/auth/auth.component';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { SecureImagePipe } from './pipes/secure-image.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     AuthComponent,
     DashboardComponent,
-    AlertComponent
+    AlertComponent,
+    SecureImagePipe
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,8 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
     HttpClientModule
   ],
   providers: [
-    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true }
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+    { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true }
   ],
   bootstrap: [AppComponent]
 })
