@@ -1,15 +1,19 @@
 import { TestBed, async } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
-import { AppComponent } from './app.component';
+import { AuthComponent } from './auth.component';
+import { AlertComponent } from '../../directives';
+import { ReactiveFormsModule } from '@angular/forms';
 
-describe('AppComponent', () => {
+describe('AuthComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        RouterTestingModule
+        RouterTestingModule,
+        ReactiveFormsModule
       ],
       declarations: [
-        AppComponent
+        AuthComponent,
+        AlertComponent
       ],
     }).compileComponents();
   }));
@@ -22,7 +26,7 @@ describe('AppComponent', () => {
     // manipulate the test subject and assert expectations.
 
     function setup() {
-      const fixture = TestBed.createComponent(AppComponent);
+      const fixture = TestBed.createComponent(AuthComponent);
       const app = fixture.debugElement.componentInstance;
       return { fixture, app };
     }
