@@ -12,6 +12,7 @@ export class DashboardComponent implements OnInit {
 
   private currentUser: any = {};
   public assets: any[];
+  public loading = false;
 
   constructor(
     private assetService: AssetService,
@@ -25,6 +26,8 @@ export class DashboardComponent implements OnInit {
   }
 
   public loadAllAssets() {
+    this.loading = true;
+
     this.assetService.getAllAssets(this.currentUser.roles[0].companyId)
       .pipe(first())
       .subscribe(
@@ -42,6 +45,7 @@ export class DashboardComponent implements OnInit {
       .subscribe(
         data => {
           this.assets = data;
+          this.loading = false;
         },
         error => {
           this.alertService.error(error);

@@ -13,10 +13,10 @@ import { AuthenticationService, AlertService } from '../../services';
 })
 export class AuthComponent implements OnInit {
 
-  loginForm: FormGroup;
-  loading = false;
-  submitted = false;
-  returnUrl: string;
+  public loginForm: FormGroup;
+  public loading = false;
+  public submitted = false;
+  public returnUrl: string;
 
   constructor(
     private route: ActivatedRoute,
