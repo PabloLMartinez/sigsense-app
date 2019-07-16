@@ -1,9 +1,12 @@
-import { TestBed, async } from '@angular/core/testing';
+import {TestBed, async, fakeAsync, tick} from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AuthComponent } from './auth.component';
 import { AlertComponent } from '../../directives';
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { AuthenticationService } from '../../services';
+import { Observable, Observer } from 'rxjs';
+import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 
 describe('AuthComponent', () => {
   beforeEach(async(() => {
@@ -11,12 +14,14 @@ describe('AuthComponent', () => {
       imports: [
         RouterTestingModule,
         ReactiveFormsModule,
-        HttpClientModule
+        HttpClientModule,
+        FormsModule
       ],
       declarations: [
         AuthComponent,
         AlertComponent
       ],
+      schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
     }).compileComponents();
   }));
 
@@ -29,13 +34,31 @@ describe('AuthComponent', () => {
 
     function setup() {
       const fixture = TestBed.createComponent(AuthComponent);
-      const app = fixture.debugElement.componentInstance;
-      return { fixture, app };
+      const component = fixture.debugElement.componentInstance;
+      const authService = fixture.debugElement.injector.get(AuthenticationService);
+
+      return { fixture, component, authService };
     }
 
     it('should create the app', async(() => {
-      const { app } = setup();
-      expect(app).toBeTruthy();
+      const { component } = setup();
+      expect( component ).toBeTruthy();
+    }));
+
+    it('should display a system error', fakeAsync(() => {
+      const { fixture, component, authService } = setup();
+      spyOn(authService, 'login').and.returnValue(
+        Observable.create((observer: Observer<{ name: string }>) => {
+          return observer.error('something went wrong');
+        })
+      );
+
+      tick();
+      fixture.detectChanges();
+
+      const userAsyncElement = fixture.debugElement.nativeElement;
+      const systemError = userAsyncElement.querySelector('div');
+      expect(systemError.textContent).toBe('LoginEmailPasswordLogin');
     }));
   });
 });
