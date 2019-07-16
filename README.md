@@ -2,27 +2,45 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
 
-## Development server
+## Get started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+### Clone the repo
 
-## Code scaffolding
+```shell
+git clone https://github.com/PabloLMartinez/sigsense-app
+cd sigsense-app
+```
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Install Node & npm
 
-## Build
+Angular requires Node.js in your system (version 8.x or 10.x). If you already have it, you can skip this part.
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Download Node: https://nodejs.org/en/
 
-## Running unit tests
+### Install Angular CLI
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+After you’ve installed NPM, you can install Angular CLI as the 2nd step. 
 
-## Running end-to-end tests
+Open your terminal or command prompt and type the command below:
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```shell
+npm install -g @angular/cli
+```
 
-## Further help
+### Run the App
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
-"# sigsense-app" 
+```shell
+ng serve --open
+```
+
+### Libraries for styles
+
+Bootstrap 4.3
+
+https://getbootstrap.com/docs/4.3/getting-started/introduction/
+
+### CORS issue
+
+This was solved using a proxy in the configuration. 
+
+For more details take a look at 'proxy.conf.json'
