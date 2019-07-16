@@ -5,7 +5,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AuthComponent, DashboardComponent } from './components';
+import { AuthComponent, DashboardComponent, HeaderComponent } from './components';
 import { SecureImagePipe } from './pipes';
 
 import { AlertComponent } from './directives';
@@ -17,7 +17,8 @@ import { ErrorInterceptor, AuthInterceptor } from './helpers';
     AuthComponent,
     DashboardComponent,
     AlertComponent,
-    SecureImagePipe
+    SecureImagePipe,
+    HeaderComponent
   ],
   imports: [
     BrowserModule,
