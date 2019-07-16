@@ -40,7 +40,7 @@ describe('AuthComponent', () => {
       return { fixture, component, authService };
     }
 
-    it('should create the app', async(() => {
+    it('should create the AuthComponent', async(() => {
       const { component } = setup();
       expect( component ).toBeTruthy();
     }));
