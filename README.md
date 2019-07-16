@@ -30,6 +30,7 @@ npm install -g @angular/cli
 ### Run the App
 
 ```shell
+npm install
 ng serve --open
 ```
 
