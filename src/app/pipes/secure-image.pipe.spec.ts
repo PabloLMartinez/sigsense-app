@@ -4,7 +4,7 @@ import { inject, TestBed } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 // Isolated test case.
-describe('ReversePipe', () => {
+describe('SecureImagePipe', () => {
 
   beforeEach(() => TestBed.configureTestingModule({
     imports: [HttpClientTestingModule]
