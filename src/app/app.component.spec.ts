@@ -14,22 +14,22 @@ describe('AppComponent', () => {
     }).compileComponents();
   }));
 
-  it('should create the app', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app).toBeTruthy();
-  });
+  describe(':', () => {
+    // Begin by putting re-usable, preparatory code in a setup function instead of beforeEach().
+    // The setup() function returns an object literal with the variables, such as app, that a test might reference.
+    // You don't define semi-global variables (e.g., let app,fixture ) in the body of the describe().
+    // Then each test invokes setup() in its first line, before continuing with steps that
+    // manipulate the test subject and assert expectations.
 
-  it(`should have as title 'sigsenseApp'`, () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    const app = fixture.debugElement.componentInstance;
-    expect(app.title).toEqual('sigsenseApp');
-  });
+    function setup() {
+      const fixture = TestBed.createComponent(AppComponent);
+      const app = fixture.debugElement.componentInstance;
+      return { fixture, app };
+    }
 
-  it('should render title in a h1 tag', () => {
-    const fixture = TestBed.createComponent(AppComponent);
-    fixture.detectChanges();
-    const compiled = fixture.debugElement.nativeElement;
-    expect(compiled.querySelector('h1').textContent).toContain('Welcome to sigsenseApp!');
+    it('should create the app', async(() => {
+      const { app } = setup();
+      expect(app).toBeTruthy();
+    }));
   });
 });

@@ -34,6 +34,13 @@ npm install
 ng serve --open
 ```
 
+### Run test & run test with coverage
+
+```shell
+ng test
+ng test --code-coverage
+```
+
 ### Libraries for styles
 
 Bootstrap 4.3
