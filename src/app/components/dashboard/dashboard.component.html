@@ -1,24 +1,27 @@
-<h2>Dashboard</h2>
-<div class="mt-5">
-  <h3 class="text-center">Assets List</h3>
-  <table class="table table-striped table-hover">
-    <thead class="thead-dark">
-    <tr>
-      <th scope="col">#</th>
-      <th scope="col" class="w-25">Manufacturer</th>
-      <th scope="col" class="w-25">Name</th>
-      <th scope="col" class="w-25">Description</th>
-      <th scope="col" class="w-auto">Image</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let asset of assets; let i = index">
-      <th scope="row">{{ i + 1 }}</th>
-      <td>{{  asset.manufacturer }}</td>
-      <td>{{  asset.name }}</td>
-      <td>{{  asset.description }}</td>
-      <td><img [src]="asset.href | secureImage | async" class="img-thumbnail" [alt]="asset.name"></td>
-    </tr>
-    </tbody>
-  </table>
+<app-header></app-header>
+<div class="container py-5">
+  <app-alert></app-alert>
+  <div class="mt-2">
+    <h3 class="text-center">Assets List</h3>
+    <table class="table table-striped table-hover">
+      <thead class="thead-dark">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col" class="w-25">Manufacturer</th>
+        <th scope="col" class="w-25">Name</th>
+        <th scope="col" class="w-25">Description</th>
+        <th scope="col" class="w-auto">Image</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let asset of assets; let i = index">
+        <th scope="row">{{ i + 1 }}</th>
+        <td>{{  asset.manufacturer }}</td>
+        <td>{{  asset.name }}</td>
+        <td>{{  asset.description }}</td>
+        <td><img [src]="asset.href | secureImage | async" class="img-thumbnail" [alt]="asset.name"></td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
 </div>
