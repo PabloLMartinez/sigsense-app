@@ -10,7 +10,7 @@ describe('SecureImagePipe', () => {
     imports: [HttpClientTestingModule]
   }));
 
-  it('create an instance', inject(
+  it('create an instance of SecureImagePipe', inject(
     [HttpClientTestingModule, DomSanitizer],
     (httpCliet: HttpClientTestingModule, domSanitizer: DomSanitizer) => {
     const httpMock = TestBed.get(HttpTestingController);
