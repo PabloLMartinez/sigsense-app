@@ -6,6 +6,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ### Clone the repo
 
+Open your terminal or command prompt and type the command below:
+
 ```shell
 git clone https://github.com/PabloLMartinez/sigsense-app
 cd sigsense-app
@@ -20,8 +22,6 @@ Download Node: https://nodejs.org/en/
 ### Install Angular CLI
 
 After you’ve installed NPM, you can install Angular CLI as the 2nd step. 
-
-Open your terminal or command prompt and type the command below:
 
 ```shell
 npm install -g @angular/cli
