@@ -3,13 +3,15 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AuthComponent } from './auth.component';
 import { AlertComponent } from '../../directives';
 import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 describe('AuthComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        HttpClientModule
       ],
       declarations: [
         AuthComponent,
