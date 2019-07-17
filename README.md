@@ -41,6 +41,12 @@ ng test
 ng test --code-coverage
 ```
 
+### Access Credentials:
+
+username: fechallenge@sigsensetech.com
+
+password: TestTest1
+
 ### Libraries for styles
 
 Bootstrap 4.3
