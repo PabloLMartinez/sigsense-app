@@ -3,7 +3,7 @@ import { HttpClientTestingModule, HttpTestingController } from '@angular/common/
 import { AuthenticationService } from './authentication.service';
 
 
-describe('Authentication service:', () => {
+describe('Authentication Service:', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({
